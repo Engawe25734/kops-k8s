@@ -69,10 +69,10 @@ You Created. --> Save.
 # 6) create an S3 bucket
 # Execute the commands below in your KOPS control Server. use unique s3 bucket name. If you get bucket name exists error.
 
-	aws s3 mb s3://class29v
+	aws s3 mb s3://echo20
 	aws s3 ls
 	
-    ex: s3://class29v
+    ex: s3://echo20
      
 	Expose environment variable:
 
@@ -81,7 +81,7 @@ You Created. --> Save.
 	
 	# Give Unique Name And S3 Bucket which you created.
 	export NAME=class.k8s.local
-	export KOPS_STATE_STORE=s3://class29v
+	export KOPS_STATE_STORE=s3://echo20
  
     source .bashrc
 	
@@ -92,7 +92,7 @@ You Created. --> Save.
 
 # 8) Create kubernetes cluster definitions on S3 bucket
 
-	kops create cluster --zones us-east-2c --networking weave --master-size t2.medium --master-count 1 --node-size t2.medium --node-count=2 ${NAME}
+	kops create cluster --zones us-east-2b --networking weave --master-size t2.medium --master-count 1 --node-size t2.medium --node-count=2 ${NAME}
 	
 	kops create secret --name ${NAME} sshpublickey admin -i ~/.ssh/id_rsa.pub
 
